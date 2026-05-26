@@ -1,0 +1,84 @@
+# LISTA DE CONTAS CADASTRADAS
+accounts = []
+
+
+# FUNÇÕES PARA VALIDAÇÕES DA CONTA
+def validate_name(account_name):
+    if not account_name:
+        return False
+
+    if len(account_name) < 5 or len(account_name) > 80:
+        return False
+
+    if " " not in account_name:
+        return False
+
+    return True
+
+def validate_cpf(account_cpf):
+    if not account_cpf:
+        return False
+        
+    if len(account_cpf) != 11:
+        return False
+        
+    if not account_cpf.isdigit():
+        return False
+
+    return True 
+
+def validate_password(account_password):
+    if not account_password:
+        return False
+
+    if len(account_password) < 8 or len(account_password) > 32:
+        return False
+
+    if " " in account_password:
+        return False
+
+    return True
+
+
+# FUNÇÃO PARA CADASTRO DE CONTA
+def register_account():
+    while True:
+        print("=" * 10 + " CADASTRAR CONTA " + "=" * 10)
+        print() # Espaço para organização
+
+        # Entrada de dados pessoais da conta 
+        account_name = input("Nome completo: ").strip().title()
+        account_cpf = input("CPF: ").strip()
+        account_password = input("Senha: ").strip()
+
+        # Verificar as informações usando função
+        if not validate_name(account_name):
+            print("Preencha o nome corretamente!")
+            continue
+
+        if not validate_cpf(account_cpf):
+            print("Preencha seu CPF corretamente!")
+            continue
+
+        if not validate_password(account_password):
+            print("Preencha sua senha corretamente!")
+            continue
+
+        # Criar um código para a conta do usuário
+        account_number = len(accounts) + 1
+
+        # Dicionário com as informações da conta
+        account = {
+            "Número": account_number,
+            "Nome": account_name,
+            "CPF": account_cpf,
+            "Senha": account_password,
+            "Saldo": 0.0,
+            "Histórico": []
+        }
+
+        # Adicionar informações na lista de contas
+        accounts.append(account)
+
+        print("Conta cadastrada com sucesso!")
+        break
