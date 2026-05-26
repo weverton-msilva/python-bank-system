@@ -1,8 +1,12 @@
-# LISTA DE CONTAS CADASTRADAS
+# =========================
+# DADOS DO SISTEMA
+# =========================
 accounts = []
 
 
-# FUNÇÕES PARA VALIDAÇÕES DA CONTA
+# =========================
+# VALIDAÇÕES
+# =========================
 def validate_name(account_name):
     if not account_name:
         return False
@@ -40,7 +44,9 @@ def validate_password(account_password):
     return True
 
 
-# FUNÇÃO PARA CADASTRO DE CONTA
+# =========================
+# CADASTRAR CONTA
+# =========================
 def register_account():
     while True:
         print("=" * 10 + " CADASTRAR CONTA " + "=" * 10)
@@ -82,3 +88,34 @@ def register_account():
 
         print("Conta cadastrada com sucesso!")
         break
+
+
+# =========================
+# ACESSAR CONTA
+# =========================
+def access_account():
+    while True:
+        print("=" * 10 + " ACESSAR CONTA " + "=" * 10)
+        print() # Espaço para organização
+
+        # Entrada de informações para acessar
+        account_cpf = input("CPF: ").strip()
+        account_password = input("Senha: ").strip()
+
+        # Verificar do preenchimento das informações  
+        if not validate_cpf(account_cpf):
+            print("Preencha CPF corretamente!")
+            continue
+
+        if not validate_password(account_password):
+            print("Preencha sua senha corretamente!")
+            continue
+
+        # Verificar se existe essa conta no sistema
+        for account in accounts:
+            if account_cpf == account["CPF"] and account_password == account["Senha"] :
+                print(f"Seja bem vindo, {account['Nome']}!")
+                return
+
+        print("Conta não encontrada, tente novamente!")
+        return
