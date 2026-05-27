@@ -1,6 +1,5 @@
 # IMPORTA ARQUIVOS NECESSÁRIOS
 import account
-import transactions
 
 
 # FUNÇÃO DO MENUS DO USUÁRIO
@@ -13,8 +12,7 @@ def user_interface():
         account_options = {
             1: "Acessar o sistema",
             2: "Criar uma conta",
-            3: "Pedir Suporte",
-            4: "Sair do sistema"
+            3: "Sair do sistema"
         }
 
         for key, value in account_options.items():
@@ -33,7 +31,7 @@ def user_interface():
             user_account = int(user_account)
             
             if user_account not in account_options:
-                print("Favor preencher o campo apenas com 1 até 4")
+                print("Favor preencher o campo apenas com 1 até 3")
                 continue
 
             return user_account
@@ -46,20 +44,18 @@ def menu_controller():
     user_account =  user_interface()
 
     # Sair do sistema ao verificar opção
-    if user_account == 4:
+    if user_account == 3:
         print("Saindo do sistema, aguarde um momento...")
-        return
+        return False
 
     # Encaminhamento do usuário a função correta
     selected_option = {
         1: account.access_account,
-        2: account.register_account,
-        3: account.request_support
+        2: account.register_account
     }
 
     selected_option[user_account]()
-        
-
+    
 # EXECUTAR FUNÇÃO
 while True:
     if menu_controller() == False:
