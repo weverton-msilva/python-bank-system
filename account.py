@@ -18,6 +18,18 @@ def validate_name(account_name):
         return False
 
     return True
+    
+def validate_email(account_email):
+    if not account_email:
+        return False
+    
+    if len(account_email) < 5 or len(account_email) > 80:
+        return False
+    
+    if "@gmail.com" not in account_email:
+        return False
+        
+    return True
 
 def validate_cpf(account_cpf):
     if not account_cpf:
@@ -54,12 +66,17 @@ def register_account():
 
         # Entrada de dados pessoais da conta 
         account_name = input("Nome completo: ").strip().title()
+        account_email = input("Email: ").strip()
         account_cpf = input("CPF: ").strip()
         account_password = input("Senha: ").strip()
 
         # Verificar as informações usando função
         if not validate_name(account_name):
             print("Preencha o nome corretamente!")
+            continue
+        
+        if not validate_email(account_email):
+            print("Preencha o email corretamente!")
             continue
 
         if not validate_cpf(account_cpf):
@@ -77,6 +94,7 @@ def register_account():
         account = {
             "Número": account_number,
             "Nome": account_name,
+            "Email": account_email,
             "CPF": account_cpf,
             "Senha": account_password,
             "Saldo": 0.0,
@@ -99,12 +117,12 @@ def access_account():
         print() # Espaço para organização
 
         # Entrada de informações para acessar
-        account_cpf = input("CPF: ").strip()
+        account_email = input("Email: ").strip()
         account_password = input("Senha: ").strip()
 
         # Verificar do preenchimento das informações  
-        if not validate_cpf(account_cpf):
-            print("Preencha CPF corretamente!")
+        if not validate_email(account_email):
+            print("Preencha seu email corretamente!")
             continue
 
         if not validate_password(account_password):
@@ -113,7 +131,7 @@ def access_account():
 
         # Verificar se existe essa conta no sistema
         for account in accounts:
-            if account_cpf == account["CPF"] and account_password == account["Senha"] :
+            if account_email == account["Email"] and account_password == account["Senha"] :
                 print(f"Seja bem vindo, {account['Nome']}!")
                 return
 
