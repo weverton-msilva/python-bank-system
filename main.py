@@ -24,7 +24,6 @@ def user_interface():
 
         # Solicitação da entrada de dados da parte do usuário
         user_account = input("Opção selecionada: ").strip()
-        print(user_account) # Retirar após finalizar código
 
         # Verificar a entrada e transforma em inteiro
         if not user_account:
@@ -41,6 +40,7 @@ def user_interface():
             return user_account
         except ValueError:
             print("Favor preencher o campo com números inteiros!")
+            continue
 
 
 # =========================

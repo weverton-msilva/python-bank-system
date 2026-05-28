@@ -133,7 +133,46 @@ def access_account():
         for account in accounts:
             if account_email == account["Email"] and account_password == account["Senha"] :
                 print(f"Seja bem vindo, {account['Nome']}!")
+                user_interface()
                 return
 
         print("Conta não encontrada, tente novamente!")
         return
+    
+
+# =========================
+# INTERFACE DO SISTEMA DO USUÁRIO
+# =========================
+def user_interface():
+    while True:
+        print() # Espaço para organização
+
+        # Dicionário do menu de opções
+        option_map = {
+            1: "Depositar",
+            2: "Sacar",
+            3: "Transferir",
+            4: "ver_extrato",
+            5: "sair"
+        }
+    
+        # Imprimir dicionário
+        for key, value in option_map.items():
+            print(f"{key} - {value}")
+
+        # Receber a entrada do usuário
+        user_option = input("Opção: ").strip()
+
+        # Verificar a entrada e transforma em inteiro
+        try:
+            user_option = int(user_option)
+
+            if user_option not in option_map:
+                print("Escolha uma opção válida do menu.")
+                continue
+
+        except ValueError:
+            print("Favor preencher o campo com números inteiros!")
+            continue
+
+        # Executar função solicitada (Está em andamento)
