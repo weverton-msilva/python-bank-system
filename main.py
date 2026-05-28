@@ -1,8 +1,12 @@
+# =========================
 # IMPORTA ARQUIVOS NECESSÁRIOS
+# =========================
 import account
 
 
+# =========================
 # FUNÇÃO DO MENUS DO USUÁRIO
+# =========================
 def user_interface():
     while True:
         print("=" * 10 + " SISTEMA BANCÁRIO " + "=" * 10)
@@ -39,7 +43,9 @@ def user_interface():
             print("Favor preencher o campo com números inteiros!")
 
 
+# =========================
 # DIRECIONAR USUÁRIO AO SISTEMA DE CONTA
+# =========================
 def menu_controller():
     user_account =  user_interface()
 
@@ -56,7 +62,9 @@ def menu_controller():
 
     selected_option[user_account]()
     
+# =========================    
 # EXECUTAR FUNÇÃO
+# =========================
 while True:
     if menu_controller() == False:
         break

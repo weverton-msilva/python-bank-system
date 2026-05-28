@@ -26,7 +26,7 @@ def validate_email(account_email):
     if len(account_email) < 5 or len(account_email) > 80:
         return False
     
-    if "@gmail.com" not in account_email:
+    if not account_email.endswith(("@gmail.com", "@outlook.com", "@hotmail.com", "@yahoo.com")):
         return False
         
     return True
