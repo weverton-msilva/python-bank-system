@@ -11,6 +11,7 @@ def user_interface():
     while True:
         print("=" * 10 + " SISTEMA BANCÁRIO " + "=" * 10)
         print() # Espaço para organização
+        print("Opções disponíveis:")
 
         # Dicionário de opções e impressão do mesmo em tela
         account_options = {

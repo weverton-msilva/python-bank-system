@@ -1,4 +1,10 @@
 # =========================
+# IMPORTA ARQUIVOS NECESSÁRIOS
+# =========================
+import accountService
+
+
+# =========================
 # DADOS DO SISTEMA
 # =========================
 accounts = []
@@ -146,14 +152,15 @@ def access_account():
 def user_interface():
     while True:
         print() # Espaço para organização
+        print("Opções disponíveis")
 
         # Dicionário do menu de opções
         option_map = {
             1: "Depositar",
             2: "Sacar",
             3: "Transferir",
-            4: "ver_extrato",
-            5: "sair"
+            4: "Ver Extrato",
+            5: "Sair"
         }
     
         # Imprimir dicionário
@@ -174,5 +181,19 @@ def user_interface():
         except ValueError:
             print("Favor preencher o campo com números inteiros!")
             continue
+        
+        # Sair do sistema ao verificar opção
+        if user_option == 5:
+            print("Saindo do sistema, aguarde um momento...")
+            break
 
-        # Executar função solicitada (Está em andamento)
+        # Encaminhamento do usuário a função correta
+        option_function = {
+            1: accountService.deposit,
+            2: accountService.withdraw,
+            3: accountService.transfer,
+            4: accountService.view_statement
+        }
+        
+        # Executar função solicitada
+        option_function[user_option]()
