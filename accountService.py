@@ -1,21 +1,17 @@
 # =========================
 # FUNÇÕES DO BANCO (Em andamento ainda!)
 # =========================
-def deposit():
-    print("Depositar em andamento...")
-    return
+def deposit(account):
+    pass
     
 
-def withdraw():
-    print("Sacar em andamento...")
-    return
+def withdraw(account):
+    pass
     
     
-def transfer():
-    print("Transferir em andamento...")
-    return
+def transfer(account):
+    pass
     
     
-def view_statement():
-    print("Ver Extrato em andamento...")
-    return
+def view_statement(account):
+    pass

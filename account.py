@@ -139,7 +139,7 @@ def access_account():
         for account in accounts:
             if account_email == account["Email"] and account_password == account["Senha"] :
                 print(f"Seja bem vindo, {account['Nome']}!")
-                user_interface()
+                user_interface(account)
                 return
 
         print("Conta não encontrada, tente novamente!")
@@ -149,8 +149,13 @@ def access_account():
 # =========================
 # INTERFACE DO SISTEMA DO USUÁRIO
 # =========================
-def user_interface():
+def user_interface(account):
     while True:
+        # Informações do usuário cadastrado
+        print() # Organização
+        print(f"Usuário: {account['Número']} - {account['Nome']}")
+        print(f"Saldo atual: {account['Saldo']}")
+
         print() # Espaço para organização
         print("Opções disponíveis")
 
@@ -196,4 +201,4 @@ def user_interface():
         }
         
         # Executar função solicitada
-        option_function[user_option]()
+        option_function[user_option](account)
