@@ -153,7 +153,7 @@ def user_interface(account):
     while True:
         # Informações do usuário cadastrado
         print() # Organização
-        print(f"Usuário: {account['Número']} - {account['Nome']}")
+        print(f"Usuário: {account['Número']}- {account['Nome']}")
         print(f"Saldo atual: {account['Saldo']}")
 
         print() # Espaço para organização
